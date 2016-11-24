@@ -23,4 +23,16 @@ class DispositivoRastreo {
         this.datos = datos;
         this.codigoRastreo = codigoRastreo;
     }
+    
+    public void eliminaDispositivoRastreo(DispositivoRastreo dr) {
+        
+    }
+    
+    public void modificaDispositivoRastreo(DispositivoRastreo dr) {
+        
+    }
+    
+    public void agregaDispositivoRastreo() {
+        
+    }
 }

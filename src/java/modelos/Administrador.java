@@ -26,31 +26,6 @@ public class Administrador {
         this.password = password;
     }
     
-    public void generarReporte() {
-        
-    }
     
-    public void eliminaDispositivoRastreo(DispositivoRastreo dr) {
-        
-    }
     
-    public void modificaDispositivoRastreo(DispositivoRastreo dr) {
-        
-    }
-    
-    public void agregaDispositivoRastreo() {
-        
-    }
-    
-    public void eliminaDispositivoReferencia(DispositivoReferencia dr) {
-        
-    }
-    
-    public void modificaDispositivoReferencia(DispositivoReferencia dr) {
-        
-    }
-    
-    public void agregaDispositivoReferencia() {
-        
-    }
 }

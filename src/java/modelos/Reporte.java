@@ -25,4 +25,8 @@ public class Reporte {
         this.descripcion = descripcion;
         this.ubicacion = ubicacion;
     }
+    
+    public void generarReporte() {
+        
+    }
 }

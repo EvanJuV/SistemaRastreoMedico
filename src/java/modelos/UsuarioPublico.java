@@ -24,10 +24,6 @@ public class UsuarioPublico {
         this.idUsuario = idUsuario;
     }
     
-    public void consultarEquipo() {
-        
-    }
-    
     public void generaReporteProblema() {
         
     }

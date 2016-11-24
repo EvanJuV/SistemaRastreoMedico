@@ -40,4 +40,5 @@ public class Equipo {
     public void setDatos(Datos datos) {
         this.datos = datos;
     }
+    
 }
