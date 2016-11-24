@@ -16,10 +16,10 @@ public class ControlEquipo {
     Equipo equipo;
     
     public ControlEquipo() {
-        Equipo equipo = new Equipo();
+        equipo = new Equipo();
     }
     
-    public void agregarCliente(String nombre, String nombreAdmin, String paswd, int cuenta, Connection con) {
-//        equipo.crearEquipo(nombre, nombreAdmin, paswd, con);
+    public void agregarEquipo(String nombreEquipo, String estado, Connection con) {
+        equipo.crearEquipo(nombreEquipo, estado, con);
     }
 }

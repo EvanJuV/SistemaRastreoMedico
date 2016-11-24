@@ -1,5 +1,6 @@
 package interfaces;
 
+import controles.ControlEquipo;
 import java.sql.Connection;
 import java.io.PrintWriter;
 import java.io.IOException;
@@ -86,14 +87,14 @@ public class InterfazEquipos extends HttpServlet {
     private void listarEquipos() throws ServletException, IOException {
         encabezadoHTML(); ///Preparar encabezado de la pagina Web
         out.println("Insertar nuevo equipo</p> \n" +
-            "<form method=POST action=Agregar> \n" +
+            "<form method=POST action=Equipos> \n" +
                "<input type=hidden name=operacion value=agregar> \n" +
                "Nombre: <input type=text name=nombre size=15 autofocus></p> \n" +
                "Estado: <input type=text name=estado size=15 autofocus></p> \n" +
                "<input type=submit value=Enviar name=B1></p> \n" +
             "</form> \n"
         );
-        
+
         Equipo equipo = new Equipo();
         
         ArrayList<Equipo> equipos = equipo.listarEquipos(con);
@@ -119,8 +120,19 @@ public class InterfazEquipos extends HttpServlet {
     
     private void agregarEquipo() throws ServletException, IOException {
         encabezadoHTML();
+        String nombreEquipo = thisRequest.getParameter("nombre");
+        String estado = thisRequest.getParameter("estado");
+
+        ControlEquipo ce = new ControlEquipo();
         
+        if (nombreEquipo.length() > 0 && estado.length() > 0) {
+            ce.agregarEquipo(nombreEquipo, estado, con);
+//            encabezadoHTML();///Preparar encabezado de la pagina Web
+            thisResponse.setContentType("text/html");
+            listarEquipos();
+        }   
     }
+    
 //
 //   private void extraerEfectivo() throws ServletException, IOException {
 //      int ncuenta;

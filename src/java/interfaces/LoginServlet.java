@@ -33,6 +33,8 @@ public class LoginServlet extends HttpServlet {
 
         String user = request.getParameter("usuario");
         String pwd = request.getParameter("password");
+        String idPublica = request.getParameter("idPublica");
+
 
 
         ///La conexion se establecio en ContextListener
@@ -43,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 
         
         ControlLogin_Publico cLoginPublico = new ControlLogin_Publico();
-        int idPublico = cLoginPublico.validarUsuarioPublico(user, conn);
+        int idPublico = cLoginPublico.validarUsuarioPublico(idPublica, conn);
             
         if (idAdmin != 0) { ///El usuario o clave son incorrectos
             
@@ -59,12 +61,13 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("Menu");
             rd.forward(request, response);
         }
-        else if (idPublico !=0) {
+        if (idPublico !=0) {
             ///Crea una sesion que expirara en 30 minutos
             HttpSession session = request.getSession();
             session.setMaxInactiveInterval(30 * 60);
 
             String sCuenta = Integer.toString(idPublico);
+            session.setAttribute("tipo", "publico");
             session.setAttribute("idUsuario", sCuenta);
             RequestDispatcher rd = request.getRequestDispatcher("Menu");
             rd.forward(request, response);
@@ -79,4 +82,5 @@ public class LoginServlet extends HttpServlet {
     }
 
 }
+
 

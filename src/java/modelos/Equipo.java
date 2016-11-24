@@ -32,11 +32,12 @@ public class Equipo {
         this.estado = estado;
     }
 
-    public void crearEquipo(String nombreEquipo, Connection con) {
+    public void crearEquipo(String nombreEquipo, String estado, Connection con) {
         try {
-            String query = "INSERT INTO usuario (NombreUsuario) VALUES (?)";
+            String query = "INSERT INTO equipo (NombreEquipo, Estado) VALUES (?, ?)";
             stmt = con.prepareStatement(query);
             stmt.setString(1, nombreEquipo);
+            stmt.setString(2, estado);
             stmt.execute();
         }catch (Exception e) { System.out.println ("No se pudo ejecutar agregar() a la tabla Cliente" + e ); }
     }

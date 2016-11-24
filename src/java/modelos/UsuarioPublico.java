@@ -63,11 +63,11 @@ public class UsuarioPublico {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
         
-    public int validar(String nombreUsuario, Connection con) {
+    public int validar(String IDUsuario, Connection con) {
         try {
-            String query = "SELECT * FROM usuario WHERE NombreUsuario = ?";
+            String query = "SELECT * FROM usuario WHERE IDUsuario = ?";
             stmt = con.prepareStatement(query);
-            stmt.setString(1, nombreUsuario);
+            stmt.setString(1, IDUsuario);
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) { ///Va al primer registro si lo hay
