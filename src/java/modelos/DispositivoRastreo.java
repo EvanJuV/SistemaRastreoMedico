@@ -1,30 +1,31 @@
 package modelos;
-import java.util.Date;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.sql.Date;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-/**
- *
- * @author Evan
- */
-class DispositivoRastreo {
+public class DispositivoRastreo {
     
-    // Variables
-    private String ubicacion;
-    private Date fecha;
-    private String codigoRastreo;
+    PreparedStatement stmt;
 
-    public DispositivoRastreo() {
+    public void agregaDispositivoRastreo(Int CodigoRastreo, Connection con) {
+        try {
+            String query = "INSERT INTO (CodigoRastreo, Datos) VALUES (?)";
+            stmt = con.prepareStatement(query);
+            stmt.setInt(1, CodigoRastreo)
+            stmt.execute();
+        }catch (Exception e) { System.out.printIn ("No se pudo agregar el Dispositivo de Rastreo" + e); }
     }
-
-    public DispositivoRastreo(Date fecha, String ubicacion, String codigoRastreo) {
-        this.fecha = fecha;
-        this.codigoRastreo = codigoRastreo;
-        this.ubicacion = ubicacion;
+    
+    public void eliminaDispositivoRastreo(Int CodigoRastreo, Connection con)
+    {
+        try {
+            String query = "DELETE FROM dispositivoderastreo WHERE CodigoRastreo = ?";
+            stmt = con.prepareStatement(query);
+            stmt.setInt(1, CodigoRastreo);
+            stmt.execute();
+        }catch (Exception e) { System.out.printIn ("No se pudo eliminar el Dispositivo de Rastreo" + e); } 
     }
 }
 
