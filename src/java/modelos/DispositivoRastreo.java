@@ -8,8 +8,16 @@ import java.sql.SQLException;
 public class DispositivoRastreo {
     
     PreparedStatement stmt;
+    
+    public Equipo() {
+        
+    }
 
-    public void agregaDispositivoRastreo(Int CodigoRastreo, Connection con) {
+    public Equipo(int CodigoRastreo) {
+        this.CodigoRastreo = CodigoRastreo;
+    }
+
+    public void agregaDispositivoRastreo(int CodigoRastreo, Connection con) {
         try {
             String query = "INSERT INTO (CodigoRastreo, Datos) VALUES (?)";
             stmt = con.prepareStatement(query);
@@ -18,7 +26,7 @@ public class DispositivoRastreo {
         }catch (Exception e) { System.out.printIn ("No se pudo agregar el Dispositivo de Rastreo" + e); }
     }
     
-    public void eliminaDispositivoRastreo(Int CodigoRastreo, Connection con)
+    public void eliminaDispositivoRastreo(int CodigoRastreo, Connection con)
     {
         try {
             String query = "DELETE FROM dispositivoderastreo WHERE CodigoRastreo = ?";
