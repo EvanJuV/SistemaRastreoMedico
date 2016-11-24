@@ -32,10 +32,10 @@ public class ContextListener implements ServletContextListener {
    @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
    	 Connection conn = (Connection) servletContextEvent.getServletContext().getAttribute("DBConnection");
-    	 try {
-                conn.close();
+    	 /*try {
+                //conn.close();
         } catch (SQLException e) {
                 e.printStackTrace();
-        }
+        }*/
     }
 }
