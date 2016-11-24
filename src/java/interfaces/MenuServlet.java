@@ -37,25 +37,35 @@ public class MenuServlet extends HttpServlet {
          RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
 			   rd.include(request, response); ///include() permite que el mensaje anterior se incluya en la pagina Web         
       } else {
-         //Mostrar el menu de opciones
-         response.setContentType("text/html");
-         out.println(
-            "<!DOCTYPE html> \n" +
-            "<html> \n" +
-            "<head> \n" +
-            "<meta charset=utf-8> \n" +
-            "</head> \n" +
-            "<body> \n" +
-            "<title>Banco AMSS</title> \n" +
-            "<h2>Cajero Electronico</h2> \n" +
-            "<h3>Indica la operacion que deseas realizar</h3> </p>" +
-            "<a href=Extraer>Extraer efectivo</a> </p>" +
-            "<a href=Consulta>Consultar saldo</a> </p>" +
-            "<a href=Transferencia>Transferencia de saldo</a></p>" +
-            "<a href=Logout>Terminar la sesion</a></p>" +
-            "</body>" +
-            "</html>"         
-         );
+         String tipoUsuario = (String) sesion.getAttribute("tipo");
+         
+         if (tipoUsuario.equals("admin")) {
+             //Mostrar el menu de opciones
+             response.setContentType("text/html");
+             RequestDispatcher rd = getServletContext().getRequestDispatcher("/menuAdmin.html");
+             rd.include(request, response);
+         }
+         else if (tipoUsuario.equals("publico")) {
+             //Mostrar el menu de opciones
+             response.setContentType("text/html");
+             out.println(
+                     "<!DOCTYPE html> \n"
+                     + "<html> \n"
+                     + "<head> \n"
+                     + "<meta charset=utf-8> \n"
+                     + "</head> \n"
+                     + "<body> \n"
+                     + "<title>Banco AMSS</title> \n"
+                     + "<h2>Cajero Electronico</h2> \n"
+                     + "<h3>Indica la operacion que deseas realizar</h3> </p>"
+                     + "<a href=Extraer>Extraer efectivo</a> </p>"
+                     + "<a href=Consulta>Consultar saldo</a> </p>"
+                     + "<a href=Transferencia>Transferencia de saldo</a></p>"
+                     + "<a href=Logout>Terminar la sesion</a></p>"
+                     + "</body>"
+                     + "</html>"
+             ); 
+         }
       }   
    }
 }

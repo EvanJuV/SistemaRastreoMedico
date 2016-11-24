@@ -51,6 +51,7 @@ public class LoginServlet extends HttpServlet {
             session.setMaxInactiveInterval(30 * 60);
 
             String sCuenta = Integer.toString(idAdmin);
+            session.setAttribute("tipo", "admin");
             session.setAttribute("idAdmin", sCuenta);
             session.setAttribute("usuario", user);
             session.setAttribute("password", pwd);

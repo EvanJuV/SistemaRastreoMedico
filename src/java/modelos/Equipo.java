@@ -18,10 +18,10 @@ import java.util.ArrayList;
 public class Equipo {
     
     // Variables
-    int idEquipo;
-    String nombre;
-    String estado;
-    PreparedStatement stmt;
+    public int idEquipo;
+    public String nombre;
+    public String estado;
+    public PreparedStatement stmt;
     
     public Equipo() {
         
