@@ -1,5 +1,7 @@
 package modelos;
 
+import java.sql.Connection;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -52,5 +54,13 @@ public class Administrador {
     
     public void agregaDispositivoReferencia() {
         
+    }
+
+    public void crear(String nombre, String nombreAdmin, String paswd, Connection con) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int validar(String usuario, String password, Connection con) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
