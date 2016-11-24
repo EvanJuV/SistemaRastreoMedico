@@ -16,7 +16,7 @@ public class ContextListener implements ServletContextListener {
        try {
          //Sintaxis de DBConnectionManager(String dbURL, String user, String pwd)
         DBConnectionManager connectionManager = new DBConnectionManager(
-            "jdbc:mysql://localhost/sistema_rastreo", "root", ""
+            "jdbc:mysql://10.15.125.144:3306/sistema_rastreo", "root", ""
          );
         
         // Set de la conexion como atributo 
