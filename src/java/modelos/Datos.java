@@ -12,6 +12,15 @@ public class Datos {
         
     }
     
+    public Datos(int IdEquipo, int IdRastreo, String Ubicacion, Date Fecha)
+    {
+        this.IdEquipo = IdEquipo;
+        this.IdRastreo = IdRastreo;
+        this.Ubicacion = Ubicacion; 
+        this.Fecha = Fecha;
+    }
+        
+    
     public void agregaDatos(int IdEquipo, int IdRastreo, String Ubicacion, Date Fecha, Connection con) {
         try { 
             String query = "INSERT INTO datos (IdEquipo, IdRastreo, Ubicacion, Fecha) VALUES (?, ?, ?, ?);
