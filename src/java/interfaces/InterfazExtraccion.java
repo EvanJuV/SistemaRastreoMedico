@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 //Utilizando urlPatterns permite agregar parametros a la anotacion
-@WebServlet(urlPatterns = "/", 
+@WebServlet(urlPatterns = "/Extraccion", 
   initParams = {
      @WebInitParam(name = "class", value = "interfaces.InterfazExtraccion")
   }
