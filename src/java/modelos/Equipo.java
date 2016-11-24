@@ -31,10 +31,6 @@ public class Equipo {
         this.nombre = nombre;
         this.estado = estado;
     }
-    
-    public void consultarEquipo() {
-        
-    }
 
     public void crearEquipo(String nombreEquipo, Connection con) {
         try {
