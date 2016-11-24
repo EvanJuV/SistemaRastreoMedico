@@ -16,8 +16,9 @@ import javax.servlet.http.HttpServletRequest ;
 import javax.servlet.http.HttpServletResponse ;
 import javax.servlet.http.HttpSession ;
 import controles.ControlLogin ;
-
-import controles.ControlLogin;
+import controles.ControlLogin ;
+import controles.ControlLogin_Publico ;
+import controles.ControlLogin_Publico;
 
 public class LoginServlet extends HttpServlet {
 
@@ -33,19 +34,19 @@ public class LoginServlet extends HttpServlet {
         String user = request.getParameter("usuario");
         String pwd = request.getParameter("clave");
 
+
         ///La conexion se establecio en ContextListener
         Connection conn = (Connection) getServletContext().getAttribute("DBConnection");
 
         ControlLogin cLogin = new ControlLogin();
         int idAdmin = cLogin.validarCliente(user, pwd, conn);
 
-        if (idAdmin == 0) { ///El usuario o clave son incorrectos
-            PrintWriter out = response.getWriter();
-            response.setContentType("text/html");
-            out.println("<h3><font color=red>El usuario o la clave son incorrectos.</font></h3>");
-            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
-            rd.include(request, response); ///include() permite que el mensaje anterior se incluya en la pagina Web
-        } else {
+        
+        ControlLogin_Publico cLoginPublico = new ControlLogin_Publico();
+        int idPublico = cLoginPublico.validarUsuarioPublico(user, conn);
+            
+        if (idAdmin != 0) { ///El usuario o clave son incorrectos
+            
             ///Crea una sesion que expirara en 30 minutos
             HttpSession session = request.getSession();
             session.setMaxInactiveInterval(30 * 60);
@@ -57,7 +58,23 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("Menu");
             rd.forward(request, response);
         }
+        else if (idPublico !=0) {
+            ///Crea una sesion que expirara en 30 minutos
+            HttpSession session = request.getSession();
+            session.setMaxInactiveInterval(30 * 60);
 
+            String sCuenta = Integer.toString(idPublico);
+            session.setAttribute("idUsuario", sCuenta);
+            RequestDispatcher rd = request.getRequestDispatcher("Menu");
+            rd.forward(request, response);
+        }
+        else {
+            PrintWriter out = response.getWriter();
+            response.setContentType("text/html");
+            out.println("<h3><font color=red>El usuario o la clave son incorrectos.</font></h3>");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.html");
+            rd.include(request, response); ///include() permite que el mensaje anterior se incluya en la pagina Web
+        }
     }
 
 }
