@@ -23,7 +23,7 @@ public class Datos {
     
     public void agregaDatos(int IdEquipo, int IdRastreo, String Ubicacion, Date Fecha, Connection con) {
         try { 
-            String query = "INSERT INTO datos (IdEquipo, IdRastreo, Ubicacion, Fecha) VALUES (?, ?, ?, ?);
+            String query = "INSERT INTO datos (IdEquipo, IdRastreo, Ubicacion, Fecha) VALUES (?, ?, ?, ?)";
             stmt = con.prepareStatement(query);
             stmt.setInt(1, IdEquipo);
             stmt.setInt(2, IdRastreo);
