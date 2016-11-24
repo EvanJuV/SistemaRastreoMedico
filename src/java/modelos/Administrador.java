@@ -32,34 +32,6 @@ public class Administrador {
         this.usuario = usuario;
         this.password = password;
     }
-    
-    public void generarReporte() {
-        
-    }
-    
-    public void eliminaDispositivoRastreo(DispositivoRastreo dr) {
-        
-    }
-    
-    public void modificaDispositivoRastreo(DispositivoRastreo dr) {
-        
-    }
-    
-    public void agregaDispositivoRastreo() {
-        
-    }
-    
-    public void eliminaDispositivoReferencia(DispositivoReferencia dr) {
-        
-    }
-    
-    public void modificaDispositivoReferencia(DispositivoReferencia dr) {
-        
-    }
-    
-    public void agregaDispositivoReferencia() {
-        
-    }
 
     public void crear(String nombre, String nombreAdmin, String paswd, Connection con) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
