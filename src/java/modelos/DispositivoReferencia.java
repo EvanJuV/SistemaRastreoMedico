@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -61,36 +62,30 @@ class DispositivoReferencia {
           System.out.println ("No se pudo ejecutar agregarDispositivoReferencia() a la tabla DispositivoReferencia" + e );
       }
    }
-    
-    /*
-   public static void main(String[] args)
-  {
-    try
+    public ArrayList<DispositivoReferencia> listarDispositivosdeReferencia(Connection con) 
     {
-      // create the mysql database connection
-      String myDriver = "org.gjt.mm.mysql.Driver";
-      String myUrl = "jdbc:mysql://localhost/test";
-      Class.forName(myDriver);
-      Connection conn = DriverManager.getConnection(myUrl, "root", "");
-      
-      // create the mysql delete statement.
-      // i'm deleting the row where the id is "3", which corresponds to my
-      // "Barney Rubble" record.
-      String query = "delete from users where id = ?";
-      PreparedStatement preparedStmt = conn.prepareStatement(query);
-      preparedStmt.setInt(1, 3);
+        ArrayList<DispositivoReferencia> dispositivos = new ArrayList<>();
+        try 
+        {
+            String query = "SELECT * FROM DispositivoReferencia;";
+            stmt = con.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            
+            while(rs.next()) {
+                DispositivoReferencia dr = new DispositivoReferencia();
+                dr.idReferencia = rs.getInt("IdReferencia");
+                dr.ubicacion = rs.getString("Ubicacion");
+                
+                dispositivos.add(dr);
+            }
 
-      // execute the preparedstatement
-      preparedStmt.execute();
-      
-      conn.close();
+            rs.close();
+            
+            return dispositivos;
+        }
+        catch (Exception e) {
+            System.out.println("No se pudo ejecutar listarDispositivoReferencia() a la tabla DispositivoReferencia" + e);
+        }
+        return null;
     }
-    catch (Exception e)
-    {
-      System.err.println("Got an exception! ");
-      System.err.println(e.getMessage());
-    }
-
-  }
-    */
 }
