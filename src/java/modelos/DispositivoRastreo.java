@@ -1,4 +1,5 @@
 package modelos;
+import java.util.Date;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,14 +14,18 @@ package modelos;
 class DispositivoRastreo {
     
     // Variables
-    private Datos datos;
+    private String ubicacion;
+    private Date fecha;
     private String codigoRastreo;
 
     public DispositivoRastreo() {
     }
 
-    public DispositivoRastreo(Datos datos, String codigoRastreo) {
-        this.datos = datos;
+    public DispositivoRastreo(Date fecha, String ubicacion, String codigoRastreo) {
+        this.fecha = fecha;
         this.codigoRastreo = codigoRastreo;
+        this.ubicacion = ubicacion;
     }
 }
+
+
