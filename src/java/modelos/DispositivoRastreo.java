@@ -9,23 +9,23 @@ public class DispositivoRastreo {
     
     PreparedStatement stmt;
 
-    public void agregaDispositivoRastreo(Int CodigoRastreo, Connection con) {
+    public void agregaDispositivoRastreo(int CodigoRastreo, Connection con) {
         try {
             String query = "INSERT INTO (CodigoRastreo, Datos) VALUES (?)";
             stmt = con.prepareStatement(query);
-            stmt.setInt(1, CodigoRastreo)
+            stmt.setInt(1, CodigoRastreo);
             stmt.execute();
-        }catch (Exception e) { System.out.printIn ("No se pudo agregar el Dispositivo de Rastreo" + e); }
+        }catch (Exception e) { System.out.println ("No se pudo agregar el Dispositivo de Rastreo" + e); }
     }
     
-    public void eliminaDispositivoRastreo(Int CodigoRastreo, Connection con)
+    public void eliminaDispositivoRastreo(int CodigoRastreo, Connection con)
     {
         try {
             String query = "DELETE FROM dispositivoderastreo WHERE CodigoRastreo = ?";
             stmt = con.prepareStatement(query);
             stmt.setInt(1, CodigoRastreo);
             stmt.execute();
-        }catch (Exception e) { System.out.printIn ("No se pudo eliminar el Dispositivo de Rastreo" + e); } 
+        }catch (Exception e) { System.out.println ("No se pudo eliminar el Dispositivo de Rastreo" + e); } 
     }
 }
 
